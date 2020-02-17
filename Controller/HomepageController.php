@@ -1,6 +1,12 @@
 <?php
 declare(strict_types = 1);
 
+ini_set('display_errors', "1");
+ini_set('display_startup_errors', "1");
+error_reporting(E_ALL);
+
+require_once 'Model/User.php';
+
 class HomepageController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
