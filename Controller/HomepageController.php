@@ -5,7 +5,8 @@ ini_set('display_errors', "1");
 ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
 
-require_once 'Model/User.php';
+$json = file_get_contents('json/customers.json');
+$data = json_decode($json);
 
 class HomepageController
 {
