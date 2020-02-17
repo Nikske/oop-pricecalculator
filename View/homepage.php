@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php require 'includes/header.php'?>
+
+
+
     <section>
         <h4>Hello <?php echo $user->getName()?>,</h4>
         <p>Put your content here.</p>
