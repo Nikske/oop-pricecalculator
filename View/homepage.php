@@ -1,6 +1,3 @@
-<?php
-require_once 'Controller/HomepageController.php';
-?>
 <!doctype html>
 <html lang="en">
 <head>
