@@ -13,14 +13,16 @@ class group
     private $id;
     private $name;
     private $variable_discount;
+    private $fixed_discount;
     private $group_id;
 
 
     // Methods
-    public function __construct(int $id, string $name, int $variable_discount, int $group_id) {
+    public function __construct(int $id, string $name, int $variable_discount, int $fixed_discount, int $group_id) {
         $this->id = $id;
         $this->name = $name;
         $this->variable_discount = $variable_discount;
+        $this->fixed_discount = $fixed_discount;
         $this->group_id = $group_id;
     }
 
@@ -32,6 +34,9 @@ class group
     }
     public function getVariable_discount() : int {
         return $this->variable_discount;
+    }
+    public function getFixed_discount() : int {
+        return $this->fixed_discount;
     }
     public function getGroup_id() : int {
         return $this->group_id;
