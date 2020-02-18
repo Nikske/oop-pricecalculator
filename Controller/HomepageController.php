@@ -27,7 +27,22 @@ class HomepageController
         foreach ($productData as $product) {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
-        
+
+        $groups = [];
+        $gLoader = new groupLoader();
+        $groupData = $gLoader->getGroups();
+
+        foreach ($groupData as $group) {
+            if (!isset($group{'variable_discount'})) {
+                $group{'variable_discount'} = 0;
+            } elseif (!isset($group{'fixed_discount'})) {
+                $group{'fixed_discount'} = 0;
+            }
+            if (!isset($group{'group_id'})) {
+                $group{'group_id'} = 550;
+            }
+            array_push($groups, new group($group{'id'}, $group{'name'}, $group{'variable_discount'}, $group{'fixed_discount'}, $group{'group_id'}));
+        }
         //load the view
         require 'View/homepage.php';
     }
