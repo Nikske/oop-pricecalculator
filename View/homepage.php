@@ -18,6 +18,12 @@
                 echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
             } ?>
         </select>
+        <label for="products">Products:</label>
+        <select name="products" id="products">
+            <?php foreach ($products as $product) {
+                echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
+            } ?>
+        </select>
     </section>
     <?php require 'includes/footer.php'?>
 </body>
