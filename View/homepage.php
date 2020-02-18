@@ -12,22 +12,23 @@
     <?php require 'includes/header.php'?>
     <section>
         <h4>Hello</h4>
-        <!-- Customers -->
-        <label for="customer">Customer:</label>
-        <select name="customer" id="customer">
-            <?php foreach ($customers as $customer) {
-                echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
-            } ?>
-        </select>
-        <!-- Products -->
-        <label for="products">Products:</label>
-        <select name="products" id="products">
-            <?php foreach ($products as $product) {
-                echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
-            } ?>
-        </select>
-        <button type="submit" name="run" class="btn btn-primary">GO</button>
-
+            <form method="post">
+                <!-- Customers -->
+                <label for="customers">Customer:</label>
+                <select name="inputCustomers" id="inputCustomers">
+                    <?php foreach ($customers as $customer) {
+                        echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
+                    } ?>
+                </select>
+                <!-- Products -->
+                <label for="products">Products:</label>
+                <select name="products" id="products">
+                    <?php foreach ($products as $product) {
+                        echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
+                    } ?>
+                </select>
+                <button type="submit" name="run" class="btn btn-primary">GO</button>
+        </form>
     </section>
     <?php require 'includes/footer.php'?>
 </body>
