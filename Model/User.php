@@ -14,6 +14,7 @@ class User {
 
     // Methods
     public function __construct(int $id, string $name, int $groupId) {
+        $this->id = $id;
         $this->name = $name;
         $this->groupId = $groupId;
     }

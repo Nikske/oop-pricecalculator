@@ -11,16 +11,14 @@ class HomepageController
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
 
+        // Customers
         $customers =[];
-
         $customerLoader = new userLoader();
         $customerData = $customerLoader->getCustomers();
 
         foreach ($customerData as $customer) {
             array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
         }
-        var_dump($customers);
-
 
         //load the view
         require 'View/homepage.php';
