@@ -29,7 +29,7 @@
                         echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
                     } ?>
                 </select>
-                <button type="submit" name="run" class="btn btn-primary">GO</button>
+                <button type="submit" name="run" class="btn btn-dark">Start</button>
         </form>
     </section>
     <?php require 'includes/footer.php'?>
