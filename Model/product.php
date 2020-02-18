@@ -17,7 +17,7 @@ class product {
 
 
     // Methods
-    public function __construct(int $id, string $name, string $description, int $price) {
+    public function __construct(int $id, string $name, string $description, float $price) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
@@ -35,7 +35,7 @@ class product {
         return $this->description;
     }
 
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return $this->price;
     }
