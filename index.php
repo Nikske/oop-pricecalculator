@@ -4,6 +4,11 @@ declare(strict_types=1);
 //include all your model files here
 require 'Model/User.php';
 require 'Model/userLoader.php';
+require 'Model/productLoader.php';
+require 'Model/product.php';
+require 'Model/group.php';
+require 'Model/groupLoader.php';
+
 //include all your controllers here
 require 'Controller/HomepageController.php';
 
