@@ -6,7 +6,6 @@ require 'Model/User.php';
 require 'Model/userLoader.php';
 require 'Model/productLoader.php';
 require 'Model/product.php';
-require 'Model/group.php';
 require 'Model/groupLoader.php';
 
 //include all your controllers here
