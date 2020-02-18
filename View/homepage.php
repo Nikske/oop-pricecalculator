@@ -16,7 +16,7 @@
         <h4>Hello</h4>
             <form method="post">
                 <!-- Customers -->
-                <label for="customers">Customer:</label>
+                <label for="inputCustomers">Customer:</label>
                 <select name="inputCustomers" id="inputCustomers">
                     <?php foreach ($customers as $customer) {
                         echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
@@ -33,6 +33,5 @@
         </form>
     </section>
     <?php require 'includes/footer.php'?>
-
 </body>
 </html>
