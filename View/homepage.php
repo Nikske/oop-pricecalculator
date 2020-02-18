@@ -12,7 +12,12 @@
     <?php require 'includes/header.php'?>
     <section>
         <h4>Hello</h4>
-        <p>Put your content here.</p>
+        <label for="customer">Customer:</label>
+        <select name="customer" id="customer">
+            <?php foreach ($customers as $customer) {
+                echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
+            } ?>
+        </select>
     </section>
     <?php require 'includes/footer.php'?>
 </body>
