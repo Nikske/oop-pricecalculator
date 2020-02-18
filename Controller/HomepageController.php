@@ -6,20 +6,21 @@ ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
 
 
-$json = file_get_contents('json/customers.json');
-$data = json_decode($json);
-
-
 class HomepageController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
-    public function render(array $GET, array $POST)
-    {
-        //this is just example code, you can remove the line below
-        $user = new User('John Smith');
+    public function render(array $GET, array $POST) {
 
-        //you should not echo anything inside your controller - only assign vars here
-        // then the view will actually display them.
+        $customers =[];
+
+        $customerLoader = new userLoader();
+        $customerData = $customerLoader->getCustomers();
+
+        foreach ($customerData as $customer) {
+            array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
+        }
+        var_dump($customers);
+
 
         //load the view
         require 'View/homepage.php';
