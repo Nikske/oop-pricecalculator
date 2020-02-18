@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/oop-pricecalculator.iml" filepath="$PROJECT_DIR$/.idea/oop-pricecalculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pricecalculator/.idea/oop-pricecalculator.iml" filepath="$PROJECT_DIR$/../pricecalculator/.idea/oop-pricecalculator.iml" />
     </modules>
   </component>
 </project>

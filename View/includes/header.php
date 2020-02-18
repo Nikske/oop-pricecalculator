@@ -1,3 +1,3 @@
 <header>
-    <h1>Welcome to my site</h1>
+    <span> Welcome to my site</span>
 </header>
