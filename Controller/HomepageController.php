@@ -27,15 +27,7 @@ class HomepageController
         foreach ($productData as $product) {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
-
-        $groups = [];
-        $gLoader = new groupLoader();
-        $groupData = $gLoader->getGroups();
-
-        foreach ($groupData as $group) {
-            array_push($groups, new group($group{'id'}, $group{'name'}, $group{'variable_discount'}, $group{'fixed_discount'}, $group{'group_id'}));
-        }
-
+        
         //load the view
         require 'View/homepage.php';
     }
