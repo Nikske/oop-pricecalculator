@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Price calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
+    <!--<link rel="stylesheet" href="../style.css">-->
 
 </head>
 <body>
@@ -23,8 +23,8 @@
                     } ?>
                 </select>
                 <!-- Products -->
-                <label for="products">Products:</label>
-                <select name="products" id="products">
+                <label for="inputProducts">Products:</label>
+                <select name="inputProducts" id="inputProducts">
                     <?php foreach ($products as $product) {
                         echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
                     } ?>
