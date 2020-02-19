@@ -29,9 +29,7 @@ class User {
     public function getGroupId() : int {
         return $this->groupId;
     }
-
-    public function setGroups()
-    {
+    public function setGroups() {
 
     }
 
