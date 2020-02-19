@@ -13,7 +13,7 @@
 <body>
     <?php require 'includes/header.php'?>
     <section>
-        <h4>Hello</h4>
+        <h4>Please make your choice</h4>
             <form method="post">
                 <!-- Customers -->
                 <label for="inputCustomers">Customer:</label>
