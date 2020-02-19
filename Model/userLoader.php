@@ -13,10 +13,5 @@ class userLoader {
         return $this->costumerData;
     }
 
-    public function makeCustomers(){
-        foreach($this->customerData as $customer) {
-            array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
-        }
-    }
 }
 ?>
