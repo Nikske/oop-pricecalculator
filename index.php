@@ -7,17 +7,12 @@ require 'Model/userLoader.php';
 require 'Model/productLoader.php';
 require 'Model/product.php';
 require 'Model/groupLoader.php';
+require 'Model/Loader.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
-
 session_start();
-/*$customerLoader = new userLoader();
-$productLoader= new productLoader();
 
-if (!isset($_SESSION )) {
-    $controller->loader();
-}*/
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
