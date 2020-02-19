@@ -18,14 +18,14 @@
                 <!-- Customers -->
                 <label for="inputCustomers">Customer:</label>
                 <select name="inputCustomers" id="inputCustomers">
-                    <?php foreach ($customers as $customer) {
+                    <?php foreach ($_SESSION['customers'] as $customer) {
                         echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
                     } ?>
                 </select>
                 <!-- Products -->
                 <label for="inputProducts">Products:</label>
                 <select name="inputProducts" id="inputProducts">
-                    <?php foreach ($products as $product) {
+                    <?php foreach ($_SESSION['products'] as $product) {
                         echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
                     } ?>
                 </select>

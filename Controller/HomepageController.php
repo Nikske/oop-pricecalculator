@@ -7,25 +7,38 @@ error_reporting(E_ALL);
 
 
 class HomepageController {
+    public function init() {
+        $loader = new Loader;
+        $customerData =  $loader->loadCustomers();
+        $productData = $loader->loadProducts();
+        //$loader->loadGroups();
 
-    //render function with both $_GET and $_POST vars available if it would be needed.
-    public function render(array $GET, array $POST) {
-        // Customers
-        $customers =[];
-        $customerLoader = new userLoader();
-        $customerData = $customerLoader->getCustomers();
-
+        $customers = [];
         foreach ($customerData as $customer) {
             array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
         }
-        $products =[];
-        $pLoader = new productLoader();
-        $productData = $pLoader ->getProducts();
+        $_SESSION['customers'] = $customers;
 
+        $products = [];
         foreach ($productData as $product) {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
+        $_SESSION['products'] = $products;
 
+    }
+    //render function with both $_GET and $_POST vars available if it would be needed.
+    public function render(array $GET, array $POST) {
+        if (empty($_SESSION)) {
+            $this->init();
+        }
+
+        function whatIsHappening() {
+            echo '<h2>$_POST</h2>';
+            var_dump($_POST);
+            echo '<h2>$_SESSION</h2>';
+            var_dump($_SESSION);
+        }
+        /*
         $gLoader = new groupLoader();
         $groupData = $gLoader->getGroups();
 
@@ -62,14 +75,8 @@ class HomepageController {
             array_push($fixDiscounts, $group{'fixed_discount'});
         }
         $varDiscounts = max($varDiscounts);
-        $fixDiscounts = array_sum($fixDiscounts);
+        $fixDiscounts = array_sum($fixDiscounts); */
 
-        function whatIsHappening() {
-            echo '<h2>$_POST</h2>';
-            var_dump($_POST);
-            echo '<h2>$_SESSION</h2>';
-            var_dump($_SESSION);
-        }
         //load the view
         require 'View/homepage.php';
     }
