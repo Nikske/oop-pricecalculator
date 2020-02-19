@@ -11,6 +11,7 @@ class User {
     private $id;
     private $name;
     private $groupId;
+    private $nestedGroups;
 
     // Methods
     public function __construct(int $id, string $name, int $groupId) {
@@ -28,4 +29,16 @@ class User {
     public function getGroupId() : int {
         return $this->groupId;
     }
+
+    public function setGroups()
+    {
+
+    }
+
+    /*public getDiscount(prijs)
+
+    public function getMostvalue(prijs)
+    {
+        return group
+    }*/
 }

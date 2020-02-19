@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Price calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
+    <!--<link rel="stylesheet" href="../style.css">-->
 
 </head>
 <body>
@@ -16,15 +16,15 @@
         <h4>Please make your choice</h4>
             <form method="post">
                 <!-- Customers -->
-                <label for="customers">Customer:</label>
+                <label for="inputCustomers">Customer:</label>
                 <select name="inputCustomers" id="inputCustomers">
                     <?php foreach ($customers as $customer) {
                         echo '<option value="' . $customer->getId() . '">' . $customer->getName() . '</option>';
                     } ?>
                 </select>
                 <!-- Products -->
-                <label for="products">Products:</label>
-                <select name="products" id="products">
+                <label for="inputProducts">Products:</label>
+                <select name="inputProducts" id="inputProducts">
                     <?php foreach ($products as $product) {
                         echo '<option value="' . $product->getId() . '">' . $product->getName() . '</option>';
                     } ?>
@@ -33,6 +33,5 @@
         </form>
     </section>
     <?php require 'includes/footer.php'?>
-
 </body>
 </html>
