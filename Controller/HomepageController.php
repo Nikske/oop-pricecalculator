@@ -11,7 +11,7 @@ class HomepageController {
         $loader = new Loader;
         $customerData =  $loader->loadCustomers();
         $productData = $loader->loadProducts();
-        //$loader->loadGroups();
+        $groupData = $loader->loadGroups();
 
         $customers = [];
         foreach ($customerData as $customer) {
@@ -24,6 +24,12 @@ class HomepageController {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
         $_SESSION['products'] = $products;
+
+        $groups = [];
+        foreach ($groupData as $group) {
+            array_push($groups, new Group($group{'id'}, $group{'name'}, $group{'fixed_discount'}, $group{'variable_discount'}, $group{'group_id'}));
+        }
+
 
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
@@ -39,8 +45,6 @@ class HomepageController {
             var_dump($_SESSION);
         }
         /*
-        $gLoader = new groupLoader();
-        $groupData = $gLoader->getGroups();
 
         if (isset($_POST['inputCustomers'])) {
             $customerSearchId = $_POST['inputCustomers'];
