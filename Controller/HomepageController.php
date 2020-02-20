@@ -60,13 +60,36 @@ class HomepageController {
         $_SESSION['customers'] = $customers;
         $_SESSION['products'] = $products;
     }
+    public function calcDiscount($POST) {
+        $inputGroups = $_SESSION['customers'][$_POST['inputCustomers']]->getNestedGroups();
+        $inputPrice = $_SESSION['products'][$_POST['inputProducts']]->getPrice();
+
+        $fixed = [];
+        foreach ($inputGroups as $discount) {
+            if (isset($discount{'fixed_discount'})) {
+                array_push($fixed, $discount{'fixed_discount'});
+            }
+            return array_sum($fixed);
+        }
+
+        $variable = [];
+        foreach ($inputPrice as $discount) {
+            if (isset($discount{'variable_discount'})) {
+                array_push($variable, $discount{'variable_discount'});
+            }
+            return max($variable);
+        }
+    }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
         if (empty($_SESSION)) {
             $this->init();
         }
-
+        if (!empty($_POST)) {
+            $this->calcDiscount($POST);
+        }
         $this->post();
+
 
 
         function whatIsHappening() {
