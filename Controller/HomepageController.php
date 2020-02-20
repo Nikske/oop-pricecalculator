@@ -81,11 +81,23 @@ class HomepageController {
         $variable = max($variable);
 
         $variableDiscount = round($inputPrice * (1-($variable / 100)), 2);
+        $varTotal = $inputPrice - $variableDiscount;
+        $fixTotal = $inputPrice - $fixed;
 
-        if ($variableDiscount > $fixed) {
-            echo "The variable discount would be most profitable : &#8364;". $variableDiscount ." ";
+        if ($varTotal > $fixed) {
+            if ($varTotal <0) {
+                echo "It's on the house";
+            } else {
+                echo "The variable discount would be most profitable : - &#8364;" . $variableDiscount . " ";
+                echo "Your total is : &#8364;" . $varTotal . " ";
+            }
         } else {
-            echo "The fixed discount would be most profitable : &#8364;". $fixed ." ";
+            if ($fixTotal <0) {
+                echo "4free";
+            } else {
+                echo "The fixed discount would be most profitable : - &#8364;" . $fixed . " ";
+                echo "Your total is : &#8364;" . $fixTotal . " ";
+            }
         }
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
