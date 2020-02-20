@@ -31,6 +31,28 @@ class HomepageController {
         foreach ($groupData as $group) {
             array_push($groups, new Group($group{'id'}, $group{'name'}, $group{'fixed_discount'}, $group{'variable_discount'}, $group{'group_id'}));
         }
+        foreach ($customers as $customer){
+            $nextGroup =$customer->getGroupId();
+            $endOfList = false;
+
+            while ($endOfList === false){
+                foreach ($groups as $group){
+                    if ($nextGroup === $group{'id'}){
+                        $customer->setGroups($group);
+                        if (isset($group{'group_id'})){
+                            $nextGroup=$group{'group_id'};
+                            break;
+                        } else {
+                            $endOfList = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
+
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
