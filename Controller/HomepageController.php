@@ -39,19 +39,19 @@ class HomepageController {
             array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
         }
 
-
         $products = [];
         foreach ($productData as $product) {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
 
         foreach ($customers as $customer){
-
+            // Initialising checks
             $nextGroup = $customer->getGroupId();
             $endOfList = false;
-
+            // As long there is a next group, keep going
             while ($endOfList === false){
                 foreach ($groupData as $group){
+                    // If the costumer's group ID matches the group's ID, add it to that user
                     if ($nextGroup === $group{'id'}){
                         $customer->setGroups($group);
                         if (isset($group{'group_id'})){
@@ -68,7 +68,6 @@ class HomepageController {
         // Storing in sessions
         $_SESSION['customers'] = $customers;
         $_SESSION['products'] = $products;
-        var_dump($customers);
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
@@ -87,42 +86,12 @@ class HomepageController {
 
 
         }
-        /*
-
-        if (isset($_POST['inputCustomers'])) {
+        // Old but we might need the concept or some of it later so it's still here, gathering dust.
+        /* if (isset($_POST['inputCustomers'])) {
             $customerSearchId = $_POST['inputCustomers'];
         } else {
             $customerSearchId = "";
-        }
-
-        $customerGroups = [];
-
-        while ($customerSearchId !== null) {
-            foreach($groupData as $group) {
-                if ($group{'id'} == $customerSearchId) {
-                    array_push($customerGroups, $group);
-                    if (isset($group{'group_id'})) {
-                        $customerSearchId = $group{'group_id'};
-                    } else {
-                        $customerSearchId = null;
-                    }
-                }
-            }
-        }
-        var_dump($customerGroups);
-        $varDiscounts = [];
-        $fixDiscounts = [];
-        foreach ($customerGroups as $group) {
-            if (!isset($group{'variable_discount'})) {
-                $group{'variable_discount'} = 0;
-            } elseif (!isset($group{'fixed_discount'})) {
-                $group{'fixed_discount'} = 0;
-            }
-            array_push($varDiscounts, $group{'variable_discount'});
-            array_push($fixDiscounts, $group{'fixed_discount'});
-        }
-        $varDiscounts = max($varDiscounts);
-        $fixDiscounts = array_sum($fixDiscounts); */
+        } */
 
         //load the view
         require 'View/homepage.php';

@@ -26,6 +26,7 @@ class User {
     public function getGroupId() : int {
         return $this->groupId;
     }
+    // Groups
     public function getNestedGroups(): array {
         return $this->nestedGroups;
     }
@@ -33,9 +34,10 @@ class User {
         array_push($this->nestedGroups, $obj);
     }
 
+    // Concept
     /*public function getDiscount()(price) {
 
-    public function getMostvalue(prijs)
+    public function getMostvalue(price)
     {
         return group
     }*/
