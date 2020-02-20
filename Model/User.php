@@ -29,7 +29,7 @@ class User {
     public function getNestedGroups(): array {
         return $this->nestedGroups;
     }
-    public function setGroups($obj): array {
+    public function setGroups($obj) {
         array_push($this->nestedGroups, $obj);
     }
 
