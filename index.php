@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 //include all your model files here
 require 'Model/User.php';
+require 'Model/Group.php';
 require 'Model/product.php';
 require 'Model/Loader.php';
 
