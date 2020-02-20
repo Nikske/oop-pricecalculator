@@ -8,7 +8,7 @@ class User {
     private $id;
     private $name;
     private $groupId;
-    private $nestedGroups;
+    private $nestedGroups = [];
 
     // Methods
     public function __construct(int $id, string $name, int $groupId) {
@@ -26,8 +26,11 @@ class User {
     public function getGroupId() : int {
         return $this->groupId;
     }
-    public function setGroups() {
-
+    public function getNestedGroups(): array {
+        return $this->nestedGroups;
+    }
+    public function setGroups($obj): array {
+        array_push($this->nestedGroups, $obj);
     }
 
     /*public function getDiscount()(price) {
