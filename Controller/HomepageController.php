@@ -7,16 +7,6 @@ error_reporting(E_ALL);
 
 
 class HomepageController {
-    public function post() {
-
-        if (!isset($_POST['inputCustomers']) && !isset($_POST['inputProducts'])) {
-            $_POST['inputCustomers'] =1;
-            $_POST['inputProducts'] =1;
-        }else{
-            $_POST['inputCustomers'];
-            $_POST['inputProducts'];
-        }
-    }
     // Runs if none of the data is loaded yet, ie when there's no session
     public function init() {
         $loader = new Loader;
@@ -60,6 +50,16 @@ class HomepageController {
         $_SESSION['customers'] = $customers;
         $_SESSION['products'] = $products;
     }
+    public function post() {
+
+        if (!isset($_POST['inputCustomers']) && !isset($_POST['inputProducts'])) {
+            $_POST['inputCustomers'] =1;
+            $_POST['inputProducts'] =1;
+        }else{
+            $_POST['inputCustomers'];
+            $_POST['inputProducts'];
+        }
+    }
     public function calcDiscount($POST) {
         $inputGroups = $_SESSION['customers'][$_POST['inputCustomers']]->getNestedGroups();
         $inputPrice = $_SESSION['products'][$_POST['inputProducts']]->getPrice();
@@ -69,15 +69,23 @@ class HomepageController {
             if (isset($discount{'fixed_discount'})) {
                 array_push($fixed, $discount{'fixed_discount'});
             }
-            return array_sum($fixed);
         }
+        $fixed = array_sum($fixed);
 
         $variable = [];
-        foreach ($inputPrice as $discount) {
+        foreach ($inputGroups  as $discount) {
             if (isset($discount{'variable_discount'})) {
                 array_push($variable, $discount{'variable_discount'});
             }
-            return max($variable);
+        }
+        $variable = max($variable);
+
+        $variableDiscount = round($inputPrice * (1-($variable / 100)), 2);
+
+        if ($variableDiscount > $fixed) {
+            echo "The variable discount would be most profitable : &#8364;". $variableDiscount ." ";
+        } else {
+            echo "The fixed discount would be most profitable : &#8364;". $fixed ." ";
         }
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
@@ -89,23 +97,6 @@ class HomepageController {
             $this->calcDiscount($POST);
         }
         $this->post();
-
-
-
-        function whatIsHappening() {
-            echo '<h2>$_POST</h2>';
-            var_dump($_POST);
-            echo '<h2>$_SESSION</h2>';
-            var_dump($_SESSION);
-
-
-        }
-        // Old but we might need the concept or some of it later so it's still here, gathering dust.
-        /* if (isset($_POST['inputCustomers'])) {
-            $customerSearchId = $_POST['inputCustomers'];
-        } else {
-            $customerSearchId = "";
-        } */
 
         //load the view
         require 'View/homepage.php';

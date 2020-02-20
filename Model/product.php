@@ -31,9 +31,7 @@ class product {
     public function getDescription() : string {
         return $this->description;
     }
-
-    public function getPrice(): float
-    {
+    public function getPrice(): float {
         return $this->price;
     }
 }
