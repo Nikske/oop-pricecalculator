@@ -19,24 +19,20 @@ class HomepageController {
         foreach ($customerData as $customer) {
             array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
         }
-        $_SESSION['customers'] = $customers;
+
 
         $products = [];
         foreach ($productData as $product) {
             array_push($products, new product($product{'id'}, $product{'name'}, $product{'description'}, $product{'price'}));
         }
-        $_SESSION['products'] = $products;
 
-        $groups = [];
-        foreach ($groupData as $group) {
-            array_push($groups, new Group($group{'id'}, $group{'name'}, $group{'fixed_discount'}, $group{'variable_discount'}, $group{'group_id'}));
-        }
         foreach ($customers as $customer){
-            $nextGroup =$customer->getGroupId();
+
+            $nextGroup = $customer->getGroupId();
             $endOfList = false;
 
             while ($endOfList === false){
-                foreach ($groups as $group){
+                foreach ($groupData as $group){
                     if ($nextGroup === $group{'id'}){
                         $customer->setGroups($group);
                         if (isset($group{'group_id'})){
@@ -49,10 +45,11 @@ class HomepageController {
                     }
                 }
             }
-
         }
-
-
+        // Storing in sessions
+        $_SESSION['customers'] = $customers;
+        $_SESSION['products'] = $products;
+        var_dump($customers);
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
