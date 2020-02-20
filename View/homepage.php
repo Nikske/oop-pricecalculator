@@ -36,7 +36,7 @@
         <p>Thank you <?php echo $_SESSION['customers'][$_POST['inputCustomers']]->getName()?> for placing your order </p>
 
         <p>Your chosen product is   <?php echo $_SESSION['products'][$_POST['inputProducts']]->getName()?> and will be shipped out as soon as possible </p>
-        <p>It will cost you a whole &#8364; <?php echo $_SESSION['products'][$_POST['inputProducts']]->getPrice() ?></p>
+        <p>The original price is: &#8364; <?php echo $_SESSION['products'][$_POST['inputProducts']]->getPrice() ?></p>
     </section>
     <?php require 'includes/footer.php'?>
 </body>
