@@ -7,12 +7,14 @@ error_reporting(E_ALL);
 
 
 class HomepageController {
+    // Runs if none of the data is loaded yet, ie when there's no session
     public function init() {
         $loader = new Loader;
         $customerData =  $loader->loadCustomers();
         $productData = $loader->loadProducts();
-        //$loader->loadGroups();
+        $groupData = $loader->loadGroups();
 
+        // Push json data into objects
         $customers = [];
         foreach ($customerData as $customer) {
             array_push($customers, new User($customer{'id'}, $customer{'name'}, $customer{'group_id'}));
@@ -25,6 +27,10 @@ class HomepageController {
         }
         $_SESSION['products'] = $products;
 
+        $groups = [];
+        foreach ($groupData as $group) {
+            array_push($groups, new Group($group{'id'}, $group{'name'}, $group{'fixed_discount'}, $group{'variable_discount'}, $group{'group_id'}));
+        }
     }
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST) {
@@ -39,8 +45,6 @@ class HomepageController {
             var_dump($_SESSION);
         }
         /*
-        $gLoader = new groupLoader();
-        $groupData = $gLoader->getGroups();
 
         if (isset($_POST['inputCustomers'])) {
             $customerSearchId = $_POST['inputCustomers'];

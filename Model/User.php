@@ -30,7 +30,7 @@ class User {
 
     }
 
-    /*public getDiscount(prijs)
+    /*public function getDiscount()(price) {
 
     public function getMostvalue(prijs)
     {
