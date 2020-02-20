@@ -7,26 +7,17 @@ error_reporting(E_ALL);
 
 
 class HomepageController {
-    // Runs if none of the data is loaded yet, ie when there's no session
+    public function post() {
 
-    public function postThatShit() {
-
-        if (!isset($_POST['inputCustomers'])) {
+        if (!isset($_POST['inputCustomers']) && !isset($_POST['inputProducts'])) {
             $_POST['inputCustomers'] =1;
-        }else{
-            $_POST['inputCustomers'];
-        }
-        return $_POST['inputCustomers'];
-    }
-    public function postProductShit() {
-
-        if (!isset($_POST['inputProducts'])) {
             $_POST['inputProducts'] =1;
         }else{
+            $_POST['inputCustomers'];
             $_POST['inputProducts'];
         }
-        return $_POST['inputProducts'];
     }
+    // Runs if none of the data is loaded yet, ie when there's no session
     public function init() {
         $loader = new Loader;
         $customerData =  $loader->loadCustomers();
@@ -75,8 +66,8 @@ class HomepageController {
             $this->init();
         }
 
-        $this->postThatShit();
-        $this->postProductShit();
+        $this->post();
+
 
         function whatIsHappening() {
             echo '<h2>$_POST</h2>';
